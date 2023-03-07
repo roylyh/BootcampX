@@ -1,0 +1,1 @@
+SELECT count(id) FROM students WHERE cohort_id IN (SELECT id FROM cohorts LIMIT 3);
