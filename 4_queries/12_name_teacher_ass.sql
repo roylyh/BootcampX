@@ -1,5 +1,5 @@
 SELECT
-  DISTINCT c.name AS teacher,
+  DISTINCT b.name AS teacher,
   d.name AS cohort
 FROM
   assistance_requests a
