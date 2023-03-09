@@ -8,6 +8,7 @@ const pool = new Pool({
 });
 
 const args = process.argv.slice(2);
+const values = [args[0] || 'JUL02'];
 
 pool.query(`
 SELECT
@@ -19,10 +20,10 @@ FROM
   JOIN students c ON a.student_id = c.id
   JOIN cohorts d ON c.cohort_id = d.id
 WHERE
-  d.name = '${args[0] || 'JUL02'}'
+  d.name = $1
 ORDER BY
   teacher;
-`)
+`,values)
   .then(res => {
     res.rows.forEach(item => {
       console.log(`${item.cohort}: ${item.teacher}`);
